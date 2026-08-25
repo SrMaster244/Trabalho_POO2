@@ -5,40 +5,40 @@ namespace Football_Pentalty_Shootout_Game_MOO_ICT
     public partial class Form1 : Form
     {
 
-        List<string> KeeperPosition = new List<string> { "left", "right", "top", "topLeft", "topRight"};
+        List<string> KeeperPosition = new List<string> { "left", "right", "top", "topLeft", "topRight"};//LISTA DE POSIÇÕES QUE O GOLEIRO PODE PULAR PARA TENTAR DEFENDER O CHUTE DO JOGADOR
         List<PictureBox> goalTarget;
         int ballX = 0;
         int ballY = 0;
         int goal = 0;
         int miss = 0;
-        string state;
-        string playerTarget;
-        bool aimSet = false;
-        Random random = new Random();
+        string state; //posição escolhiada pelo goleiro 
+        string playerTarget; //GUARDA O LOCAL ESCOLHIDO PELO JOGADOR PARA CHUTAR A BOLA
+        bool aimSet = false; //SE O JOGADOR JÁ ESCOLHEU A POSIÇÃO PARA CHUTAR A BOLA
+        Random random = new Random();//GOLEIRO PULA PARA UM LADO ALEATÓRIO PARA TENTAR DEFENDER O CHUTE DO JOGADOR
 
         public Form1()
         {
             InitializeComponent();
-            goalTarget = new List<PictureBox> { left, right, top, topLeft, topRight};
+            goalTarget = new List<PictureBox> { left, right, top, topLeft, topRight}; //AQUI INICIALIZAMOS A LISTA DE POSIÇÕES QUE O JOGADOR PODE CHUTAR A BOLA
         }
 
-        private void SetGoalTargetEvent(object sender, EventArgs e)
+        private void SetGoalTargetEvent(object sender, EventArgs e) //CONECTADO AO PICTUREBOXES, QUANDO CLICA EM UMA REGIÃO DO GOL O MÉTODO É EXECUTADO
         {
-            if (aimSet == true) { return; }
+            if (aimSet == true) { return; } //SE O JOGADOR JÁ ESCOLHEU A POSIÇÃO PARA CHUTAR A BOLA, NÃO PODE MAIS MUDAR
 
             BallTimer.Start();
             KeeperTimer.Start();
             ChangeGoalKeeperImage();    
 
-            var senderObject = (PictureBox)sender;
-            senderObject.BackColor = Color.Beige;
+            var senderObject = (PictureBox)sender; //PEGA O OBJETO QUE DISPAROU O EVENTO E TRANSFORMA EM PICTUREBOX
+            senderObject.BackColor = Color.Beige; //MUDA A COR DA REGIÃO SELECIONADA 
 
             if (senderObject.Tag.ToString() == "topRight")
             {
                 ballX = -7;
                 ballY = 15;
-                playerTarget = senderObject.Tag.ToString();
-                aimSet = true;
+                playerTarget = senderObject.Tag.ToString(); //AQUI GUARDA A ESCOLHA DO JOGADOR 
+                aimSet = true; //BLOQUEIA NOVA ESCOLHA 
             }
             if (senderObject.Tag.ToString() == "right")
             {
@@ -73,7 +73,7 @@ namespace Football_Pentalty_Shootout_Game_MOO_ICT
 
         }
 
-        private void KeeperTimerEvent(object sender, EventArgs e)
+        private void KeeperTimerEvent(object sender, EventArgs e) //VERIFICA QUAL POSIÇÃO FOI SORTEADA 
         {
             switch (state)
             {
