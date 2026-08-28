@@ -1,5 +1,5 @@
 {
-  "version": 3,
+  "version": 4,
   "targets": {
     "net10.0-windows7.0": {}
   },
@@ -8,23 +8,23 @@
     "net10.0-windows7.0": []
   },
   "packageFolders": {
-    "C:\\Users\\Punisher\\.nuget\\packages\\": {},
-    "D:\\Desenvolvimento\\IDE\\Microsoft Visual Studio\\Shared2022\\NuGetPackages": {}
+    "C:\\Users\\alunodev11\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\PROGRAMAS\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Desenvolvimento\\!codigos\\CS\\Presencial\\!atividades\\WF\\03\\Football-Pentalty-Shootout-Game-MOO-ICT-master\\Football Pentalty Shootout Game MOO ICT\\Football Pentalty Shootout Game MOO ICT.csproj",
+      "projectUniqueName": "C:\\DevC\\Jogo 3\\Football Pentalty Shootout Game MOO ICT.csproj",
       "projectName": "Football Pentalty Shootout Game MOO ICT",
-      "projectPath": "D:\\Desenvolvimento\\!codigos\\CS\\Presencial\\!atividades\\WF\\03\\Football-Pentalty-Shootout-Game-MOO-ICT-master\\Football Pentalty Shootout Game MOO ICT\\Football Pentalty Shootout Game MOO ICT.csproj",
-      "packagesPath": "C:\\Users\\Punisher\\.nuget\\packages\\",
-      "outputPath": "D:\\Desenvolvimento\\!codigos\\CS\\Presencial\\!atividades\\WF\\03\\Football-Pentalty-Shootout-Game-MOO-ICT-master\\Football Pentalty Shootout Game MOO ICT\\obj\\",
+      "projectPath": "C:\\DevC\\Jogo 3\\Football Pentalty Shootout Game MOO ICT.csproj",
+      "packagesPath": "C:\\Users\\alunodev11\\.nuget\\packages\\",
+      "outputPath": "C:\\DevC\\Jogo 3\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "D:\\Desenvolvimento\\IDE\\Microsoft Visual Studio\\Shared2022\\NuGetPackages"
+        "C:\\Program Files (x86)\\PROGRAMAS\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Punisher\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\alunodev11\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -37,6 +37,7 @@
       },
       "frameworks": {
         "net10.0-windows7.0": {
+          "framework": "net10.0-windows7.0",
           "targetAlias": "net10.0-windows7.0",
           "projectReferences": {}
         }
@@ -51,10 +52,11 @@
         "auditLevel": "low",
         "auditMode": "all"
       },
-      "SdkAnalysisLevel": "10.0.100"
+      "SdkAnalysisLevel": "10.0.300"
     },
     "frameworks": {
       "net10.0-windows7.0": {
+        "framework": "net10.0-windows7.0",
         "targetAlias": "net10.0-windows7.0",
         "imports": [
           "net461",
@@ -75,7 +77,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.102/PortableRuntimeIdentifierGraph.json",
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.302/PortableRuntimeIdentifierGraph.json",
         "packagesToPrune": {
           "Microsoft.CSharp": "(,4.7.32767]",
           "Microsoft.VisualBasic": "(,10.4.32767]",

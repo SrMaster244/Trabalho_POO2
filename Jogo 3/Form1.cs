@@ -149,10 +149,10 @@ namespace Football_Pentalty_Shootout_Game_MOO_ICT
             }
         }
 
-        private void ChangeGoalKeeperImage()
+        private void ChangeGoalKeeperImage() // troca a imagem do goleiro conforme a posição de defesa
         {
             KeeperTimer.Start();
-            int i = random.Next(0, KeeperPosition.Count);
+            int i = random.Next(0, KeeperPosition.Count); // define a posição de defesa?
             state = KeeperPosition[i];
 
             switch (i)
