@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v10.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v10.0": {
+      "Football_Pentalty_Shootout_Game_MOO_ICT/1.0.0": {
+        "runtime": {
+          "Football_Pentalty_Shootout_Game_MOO_ICT.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Football_Pentalty_Shootout_Game_MOO_ICT/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

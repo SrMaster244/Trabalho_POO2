@@ -40,6 +40,9 @@
             football = new PictureBox();
             KeeperTimer = new System.Windows.Forms.Timer(components);
             BallTimer = new System.Windows.Forms.Timer(components);
+            timer1 = new System.Windows.Forms.Timer(components);
+            Teste1 = new Button();
+            textBox1 = new TextBox();
             ((System.ComponentModel.ISupportInitialize)left).BeginInit();
             ((System.ComponentModel.ISupportInitialize)right).BeginInit();
             ((System.ComponentModel.ISupportInitialize)topLeft).BeginInit();
@@ -170,6 +173,28 @@
             BallTimer.Interval = 20;
             BallTimer.Tick += BallTimerEvent;
             // 
+            // timer1
+            // 
+            timer1.Tick += timer1_Tick;
+            // 
+            // Teste1
+            // 
+            Teste1.Location = new Point(775, 132);
+            Teste1.Name = "Teste1";
+            Teste1.Size = new Size(75, 23);
+            Teste1.TabIndex = 9;
+            Teste1.Text = "button1";
+            Teste1.UseVisualStyleBackColor = true;
+            Teste1.Click += button1_Click;
+            // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(785, 243);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(100, 23);
+            textBox1.TabIndex = 10;
+            textBox1.TextChanged += textBox1_TextChanged;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -177,6 +202,8 @@
             BackgroundImage = Properties.Resources.background;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(899, 678);
+            Controls.Add(textBox1);
+            Controls.Add(Teste1);
             Controls.Add(football);
             Controls.Add(goalKeeper);
             Controls.Add(topRight);
@@ -214,5 +241,8 @@
         private PictureBox football;
         private System.Windows.Forms.Timer KeeperTimer;
         private System.Windows.Forms.Timer BallTimer;
+        private System.Windows.Forms.Timer timer1;
+        private Button Teste1;
+        private TextBox textBox1;
     }
 }

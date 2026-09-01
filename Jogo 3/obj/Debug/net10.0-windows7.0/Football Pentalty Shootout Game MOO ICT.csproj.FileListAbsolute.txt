@@ -21,3 +21,20 @@ C:\DevC\teste\obj\Debug\net10.0-windows7.0\Football Pentalty Shootout Game MOO I
 C:\Users\alunodev11\Documents\Jogo 3\obj\Debug\net10.0-windows7.0\Football Pentalty Shootout Game MOO ICT.dll
 C:\Users\alunodev11\Documents\Jogo 3\obj\Debug\net10.0-windows7.0\refint\Football Pentalty Shootout Game MOO ICT.dll
 C:\Users\alunodev11\Documents\Jogo 3\obj\Debug\net10.0-windows7.0\Football Pentalty Shootout Game MOO ICT.pdb
+C:\DevC\Jogo 3\bin\Debug\net10.0-windows7.0\Football_Pentalty_Shootout_Game_MOO_ICT.exe
+C:\DevC\Jogo 3\bin\Debug\net10.0-windows7.0\Football_Pentalty_Shootout_Game_MOO_ICT.deps.json
+C:\DevC\Jogo 3\bin\Debug\net10.0-windows7.0\Football_Pentalty_Shootout_Game_MOO_ICT.runtimeconfig.json
+C:\DevC\Jogo 3\bin\Debug\net10.0-windows7.0\Football_Pentalty_Shootout_Game_MOO_ICT.dll
+C:\DevC\Jogo 3\bin\Debug\net10.0-windows7.0\Football_Pentalty_Shootout_Game_MOO_ICT.pdb
+C:\DevC\Jogo 3\obj\Debug\net10.0-windows7.0\Football_Pentalty_Shootout_Game_MOO_ICT.Form1.resources
+C:\DevC\Jogo 3\obj\Debug\net10.0-windows7.0\Football Pentalty Shootout Game MOO ICT.csproj.GenerateResource.cache
+C:\DevC\Jogo 3\obj\Debug\net10.0-windows7.0\Football Pentalty Shootout Game MOO ICT.GeneratedMSBuildEditorConfig.editorconfig
+C:\DevC\Jogo 3\obj\Debug\net10.0-windows7.0\Football Pentalty Shootout Game MOO ICT.AssemblyInfoInputs.cache
+C:\DevC\Jogo 3\obj\Debug\net10.0-windows7.0\Football Pentalty Shootout Game MOO ICT.AssemblyInfo.cs
+C:\DevC\Jogo 3\obj\Debug\net10.0-windows7.0\Football Pentalty Shootout Game MOO ICT.csproj.CoreCompileInputs.cache
+C:\DevC\Jogo 3\obj\Debug\net10.0-windows7.0\Football_Pentalty_Shootout_Game_MOO_ICT.dll
+C:\DevC\Jogo 3\obj\Debug\net10.0-windows7.0\refint\Football_Pentalty_Shootout_Game_MOO_ICT.dll
+C:\DevC\Jogo 3\obj\Debug\net10.0-windows7.0\Football_Pentalty_Shootout_Game_MOO_ICT.pdb
+C:\DevC\Jogo 3\obj\Debug\net10.0-windows7.0\Football Pentalty Shootout Game MOO ICT.genruntimeconfig.cache
+C:\DevC\Jogo 3\obj\Debug\net10.0-windows7.0\ref\Football_Pentalty_Shootout_Game_MOO_ICT.dll
+C:\DevC\Jogo 3\obj\Debug\net10.0-windows7.0\Football_Pentalty_Shootout_Game_MOO_ICT.Properties.Resources.resources

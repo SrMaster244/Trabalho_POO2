@@ -1,3 +1,5 @@
+using System.Security.Cryptography;
+
 namespace Football_Pentalty_Shootout_Game_MOO_ICT
 {
     // Made by MOO ICT
@@ -5,12 +7,14 @@ namespace Football_Pentalty_Shootout_Game_MOO_ICT
     public partial class Form1 : Form
     {
 
-        List<string> KeeperPosition = new List<string> { "left", "right", "top", "topLeft", "topRight"};//LISTA DE POSIÇÕES QUE O GOLEIRO PODE PULAR PARA TENTAR DEFENDER O CHUTE DO JOGADOR
+        List<string> KeeperPosition = new List<string> { "left", "right", "top", "topLeft", "topRight" };//LISTA DE POSIÇÕES QUE O GOLEIRO PODE PULAR PARA TENTAR DEFENDER O CHUTE DO JOGADOR
         List<PictureBox> goalTarget;
         int ballX = 0;
         int ballY = 0;
         int goal = 0;
         int miss = 0;
+        int EscolhaPlayer;
+        int JogoComecou = 0;
         string state; //posição escolhiada pelo goleiro 
         string playerTarget; //GUARDA O LOCAL ESCOLHIDO PELO JOGADOR PARA CHUTAR A BOLA
         bool aimSet = false; //SE O JOGADOR JÁ ESCOLHEU A POSIÇÃO PARA CHUTAR A BOLA
@@ -19,7 +23,7 @@ namespace Football_Pentalty_Shootout_Game_MOO_ICT
         public Form1()
         {
             InitializeComponent();
-            goalTarget = new List<PictureBox> { left, right, top, topLeft, topRight}; //AQUI INICIALIZAMOS A LISTA DE POSIÇÕES QUE O JOGADOR PODE CHUTAR A BOLA
+            goalTarget = new List<PictureBox> { left, right, top, topLeft, topRight }; //AQUI INICIALIZAMOS A LISTA DE POSIÇÕES QUE O JOGADOR PODE CHUTAR A BOLA
         }
 
         private void SetGoalTargetEvent(object sender, EventArgs e) //CONECTADO AO PICTUREBOXES, QUANDO CLICA EM UMA REGIÃO DO GOL O MÉTODO É EXECUTADO
@@ -28,7 +32,7 @@ namespace Football_Pentalty_Shootout_Game_MOO_ICT
 
             BallTimer.Start();
             KeeperTimer.Start();
-            ChangeGoalKeeperImage();    
+            ChangeGoalKeeperImage();
 
             var senderObject = (PictureBox)sender; //PEGA O OBJETO QUE DISPAROU O EVENTO E TRANSFORMA EM PICTUREBOX
             senderObject.BackColor = Color.Beige; //MUDA A COR DA REGIÃO SELECIONADA 
@@ -39,6 +43,7 @@ namespace Football_Pentalty_Shootout_Game_MOO_ICT
                 ballY = 15;
                 playerTarget = senderObject.Tag.ToString(); //AQUI GUARDA A ESCOLHA DO JOGADOR 
                 aimSet = true; //BLOQUEIA NOVA ESCOLHA 
+                EscolhaPlayer = 4;
             }
             if (senderObject.Tag.ToString() == "right")
             {
@@ -46,6 +51,7 @@ namespace Football_Pentalty_Shootout_Game_MOO_ICT
                 ballY = 15;
                 playerTarget = senderObject.Tag.ToString();
                 aimSet = true;
+                EscolhaPlayer = 1;
             }
             if (senderObject.Tag.ToString() == "top")
             {
@@ -53,6 +59,7 @@ namespace Football_Pentalty_Shootout_Game_MOO_ICT
                 ballY = 20;
                 playerTarget = senderObject.Tag.ToString();
                 aimSet = true;
+                EscolhaPlayer = 2;
             }
             if (senderObject.Tag.ToString() == "topLeft")
             {
@@ -60,6 +67,7 @@ namespace Football_Pentalty_Shootout_Game_MOO_ICT
                 ballY = 15;
                 playerTarget = senderObject.Tag.ToString();
                 aimSet = true;
+                EscolhaPlayer = 3;
             }
             if (senderObject.Tag.ToString() == "left")
             {
@@ -67,6 +75,7 @@ namespace Football_Pentalty_Shootout_Game_MOO_ICT
                 ballY = 8;
                 playerTarget = senderObject.Tag.ToString();
                 aimSet = true;
+                EscolhaPlayer = 0;
             }
 
             CheckScore();
@@ -99,7 +108,7 @@ namespace Football_Pentalty_Shootout_Game_MOO_ICT
                     break;
             }
 
-            foreach (PictureBox x  in goalTarget)
+            foreach (PictureBox x in goalTarget)
             {
                 if (goalKeeper.Bounds.IntersectsWith(x.Bounds))
                 {
@@ -119,7 +128,7 @@ namespace Football_Pentalty_Shootout_Game_MOO_ICT
             football.Left -= ballX;
             football.Top -= ballY;
 
-            foreach (PictureBox x  in goalTarget)
+            foreach (PictureBox x in goalTarget)
             {
                 if (football.Bounds.IntersectsWith(x.Bounds))
                 {
@@ -148,11 +157,45 @@ namespace Football_Pentalty_Shootout_Game_MOO_ICT
                 lblScore.Text = "Scored: " + goal;
             }
         }
+        private void ResetGame()
+        {
+            football.Location = new Point(430, 500);
+            ballX = 0;
+            ballY = 0;
+            aimSet = false;
+            BallTimer.Stop();
+            KeeperTimer.Stop();
+            goalKeeper.Location = new Point(418, 169);
+            goalKeeper.Image = Properties.Resources.stand_small;
+            foreach (PictureBox x in goalTarget)
+            {
+                x.BackColor = Color.Yellow;
+            }
+        }
+        //private void btnReset_Click(object sender, EventArgs e)
+        //{
+        //  ResetGame();
+        //goal = 0;
+        //miss = 0;
+        //lblScore.Text = "Scored: " + goal;
+        //lblMissed.Text = "Missed: " + miss;
+        //}
+
+        private int Dificuldade(int opcao)
+        {
+            Random rnd = new Random();
+            if (rnd.Next(0, 4 - opcao) == 0)
+            {
+                return EscolhaPlayer;
+            }
+            else return rnd.Next(1, 4);
+        }
+
 
         private void ChangeGoalKeeperImage() // troca a imagem do goleiro conforme a posição de defesa
         {
             KeeperTimer.Start();
-            int i = random.Next(0, KeeperPosition.Count); // define a posição de defesa?
+            int i = Dificuldade(3);
             state = KeeperPosition[i];
 
             switch (i)
@@ -171,9 +214,26 @@ namespace Football_Pentalty_Shootout_Game_MOO_ICT
                     break;
                 case 4:
                     goalKeeper.Image = Properties.Resources.top_right_save_small;
+
                     break;
             }
+
+
         }
 
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            JogoComecou = 1;
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

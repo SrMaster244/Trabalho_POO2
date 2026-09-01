@@ -8,6 +8,7 @@
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
     <StartupObject>Football_Pentalty_Shootout_Game_MOO_ICT.Program</StartupObject>
+    <AssemblyName>Football_Pentalty_Shootout_Game_MOO_ICT</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>
@@ -22,6 +23,7 @@
     <EmbeddedResource Update="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </EmbeddedResource>
   </ItemGroup>
 
