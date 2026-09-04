@@ -12,9 +12,9 @@
       }
     ],
     "additionalProbingPaths": [
-      "C:\\Users\\alunolab13\\.dotnet\\store\\|arch|\\|tfm|",
-      "C:\\Users\\alunolab13\\.nuget\\packages",
-      "C:\\Program Files (x86)\\PROGRAMAS\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      "C:\\Users\\ricar\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\ricar\\.nuget\\packages",
+      "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
     ],
     "configProperties": {
       "System.Runtime.Serialization.EnableUnsafeBinaryFormatterSerialization": false,

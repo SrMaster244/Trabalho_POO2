@@ -1,0 +1,12 @@
+# Ignorar arquivos temporários do Visual Studio
+.vs/
+*.vsidx
+*.slnx
+
+# Ignorar arquivos de build
+bin/
+obj/
+
+# Ignorar arquivos de usuário
+*.user
+*.suo

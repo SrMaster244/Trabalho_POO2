@@ -1,4 +1,5 @@
-using System.Security.Cryptography;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolBar;
 
 namespace Football_Pentalty_Shootout_Game_MOO_ICT
 {
@@ -14,10 +15,16 @@ namespace Football_Pentalty_Shootout_Game_MOO_ICT
         int goal = 0;
         int miss = 0;
         int EscolhaPlayer;
-        int JogoComecou = 0;
+        int NivelDificuldade = 1; // Nível de dificuldade escolhido pelo jogador. Vai de 1 a 3.
+        int VidasPlayer = 6;
+        float multiplicador = 1;
+        float pontuacaofinal = 0;
+        bool JogoComeçou = false;
         string state; //posição escolhiada pelo goleiro 
         string playerTarget; //GUARDA O LOCAL ESCOLHIDO PELO JOGADOR PARA CHUTAR A BOLA
         bool aimSet = false; //SE O JOGADOR JÁ ESCOLHEU A POSIÇÃO PARA CHUTAR A BOLA
+
+
         Random random = new Random();//GOLEIRO PULA PARA UM LADO ALEATÓRIO PARA TENTAR DEFENDER O CHUTE DO JOGADOR
 
         public Form1()
@@ -149,42 +156,55 @@ namespace Football_Pentalty_Shootout_Game_MOO_ICT
             if (state == playerTarget)
             {
                 miss++;
-                lblMissed.Text = "Missed: " + miss;
+                lblMissed.Text = "Perdido: " + miss;
+                VidasPlayer--;
+                VidasText.Text = "VIDAS: " + VidasPlayer;
+
+                if (VidasPlayer < 1)
+                {
+                    Invisivel(false, 2);
+                    MensagemPerdeu.Visible = true;
+                    ResetPerdeu.Visible = true;                                                           
+                }
             }
             else
             {
                 goal++;
-                lblScore.Text = "Scored: " + goal;
+                PontuacaoNum.Text = goal.ToString();
             }
         }
-        private void ResetGame()
+
+        private void vidas()
         {
-            football.Location = new Point(430, 500);
-            ballX = 0;
-            ballY = 0;
-            aimSet = false;
-            BallTimer.Stop();
-            KeeperTimer.Stop();
-            goalKeeper.Location = new Point(418, 169);
-            goalKeeper.Image = Properties.Resources.stand_small;
-            foreach (PictureBox x in goalTarget)
+            switch (NivelDificuldade)
             {
-                x.BackColor = Color.Yellow;
+                case 2:
+                    VidasPlayer = 4;
+                    break;
+                case 3:
+                    VidasPlayer = 2;
+                    break;
+                default:
+                    VidasPlayer = 6;
+                    break;
             }
         }
-        //private void btnReset_Click(object sender, EventArgs e)
-        //{
-        //  ResetGame();
-        //goal = 0;
-        //miss = 0;
-        //lblScore.Text = "Scored: " + goal;
-        //lblMissed.Text = "Missed: " + miss;
-        //}
 
         private int Dificuldade(int opcao)
         {
+            switch (NivelDificuldade)
+            {
+                case 2:
+                    multiplicador = 1.5f;
+                    break;
+                case 3:
+                    multiplicador = 3.5f;
+                    break;
+                default:
+                    break;
+            }
             Random rnd = new Random();
-            if (rnd.Next(0, 4 - opcao) == 0)
+            if (rnd.Next(0, 5 - opcao) == 0)
             {
                 return EscolhaPlayer;
             }
@@ -195,7 +215,7 @@ namespace Football_Pentalty_Shootout_Game_MOO_ICT
         private void ChangeGoalKeeperImage() // troca a imagem do goleiro conforme a posição de defesa
         {
             KeeperTimer.Start();
-            int i = Dificuldade(3);
+            int i = Dificuldade(NivelDificuldade);
             state = KeeperPosition[i];
 
             switch (i)
@@ -221,6 +241,59 @@ namespace Football_Pentalty_Shootout_Game_MOO_ICT
 
         }
 
+        private void EndGame()
+        {
+            MaiorPontuacao(goal * multiplicador);
+            pontuacaofinal = goal * multiplicador;
+            JogoComeçou = false;
+            PontuacaoNum.Text = pontuacaofinal.ToString();
+            lblMissed.Text = "Perdido: 0";
+            Invisivel(true, 1);
+            Invisivel(false, 2);
+           
+            goal = 0;
+            miss = 0;
+
+        }
+        private void MaiorPontuacao(float pontuacao)
+        {
+            if (pontuacao > pontuacaofinal)
+            {
+                PontuacaoMax.Text = "PONTUAÇÃO MÁXIMA = " + pontuacao.ToString("F2");
+            }
+            PontuacaoMax.Visible = true;
+
+        }
+        private void Invisivel(bool visivel, int opcao) // Opção refere-se a ser: [1] Elementos do HUD pré jogo (botão iniciar, etc.), [2]: Elementos de gameplay (bola, escolhas)
+        {
+            if (opcao == 1)
+            {
+                IniciarJogo.Visible = visivel;
+                FotoDesfoque.Visible = visivel;
+                PontuacaoMax.Visible = visivel;
+                Op1.Visible = visivel;
+                Op2.Visible = visivel;
+                Op3.Visible = visivel;
+                NumDif.Visible = visivel;
+                PainelDificuldade.Visible = visivel;
+
+            }
+            else
+            {
+                top.Visible = visivel;
+                topLeft.Visible = visivel;
+                topRight.Visible = visivel;
+                right.Visible = visivel;
+                left.Visible = visivel;
+                football.Visible = visivel;
+                ResetButton1.Visible = visivel;
+                VidasText.Visible = visivel;
+            }
+
+        }
+
+        // ----------------------------------------- OBJETOS DA INTERFACE ---------------------------------------------------------------------
+
         private void timer1_Tick(object sender, EventArgs e)
         {
 
@@ -228,12 +301,104 @@ namespace Football_Pentalty_Shootout_Game_MOO_ICT
 
         private void button1_Click(object sender, EventArgs e)
         {
-            JogoComecou = 1;
+            JogoComeçou = true;
+
+            Invisivel(true, 2);
+            Invisivel(false, 1);
+
+            vidas();
+            VidasText.Text = "VIDAS: " + VidasPlayer;
         }
+
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            
+
+        }
+
+        private void lblMissed_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click_2(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ResetButton1_Click(object sender, EventArgs e)
+        {
+            EndGame();
+        }
+
+        private void MensagemPerdeu_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click_3(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            NivelDificuldade = 1;
+            NumDif.Text = "1";
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Op3_Click(object sender, EventArgs e)
+        {
+            NivelDificuldade = 3;
+            NumDif.Text = "3";
+        }
+
+        private void Op2_Click(object sender, EventArgs e)
+        {
+            NivelDificuldade = 2;
+            NumDif.Text = "2";
+        }
+
+        private void label1_Click_4(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ResetPerdeu_Click(object sender, EventArgs e)
+        {
+            EndGame(); 
+            ResetPerdeu.Visible = false;
+            MensagemPerdeu.Visible = false;
         }
     }
 }
