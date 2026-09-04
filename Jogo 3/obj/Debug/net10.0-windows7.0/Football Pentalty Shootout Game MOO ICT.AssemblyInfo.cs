@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Football_Pentalty_Shootout_Game_MOO_ICT")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+988d78e141bc3851ceb0f4d61e81923c012a85b5")]
 [assembly: System.Reflection.AssemblyProductAttribute("Football_Pentalty_Shootout_Game_MOO_ICT")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Football_Pentalty_Shootout_Game_MOO_ICT")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

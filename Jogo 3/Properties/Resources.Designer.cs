@@ -73,6 +73,16 @@ namespace Football_Pentalty_Shootout_Game_MOO_ICT.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap background_desfocado {
+            get {
+                object obj = ResourceManager.GetObject("background_desfocado", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap football {
             get {
                 object obj = ResourceManager.GetObject("football", resourceCulture);
